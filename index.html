@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doğru Tadilat | Tadilatta Doğru Çözüm</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --arka-plan: #fff6ec;
+            --ana-turuncu: #e33e16;
+            --yazi-koyu: #1a1a1a;
+            --yazi-gri: #555;
+            --beyaz: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: var(--arka-plan); 
+            color: var(--yazi-koyu);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVİGASYON --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 8%;
+            background-color: var(--arka-plan);
+        }
+        
+        /* --- LOGO BOYUTU --- */
+        .logo-bolumu img { height: 280px; mix-blend-mode: multiply; }
+        /* ------------------- */
+
+        .sag-menu { display: flex; align-items: center; gap: 30px; }
+        nav ul { display: flex; list-style: none; gap: 20px; }
+        nav ul li a { text-decoration: none; color: var(--yazi-koyu); font-weight: 500; }
+        nav ul li a:hover { color: var(--ana-turuncu); }
+        
+        .ust-butonlar { display: flex; gap: 10px; }
+        .btn-turuncu { background: var(--ana-turuncu); color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; }
+        .btn-beyaz { background: white; color: var(--yazi-koyu); padding: 12px 24px; border-radius: 8px; border: 1px solid #ddd; text-decoration: none; font-weight: bold; }
+        .btn-beyaz:hover { background: #f5f5f5; }
+
+        /* --- HERO --- */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            padding: 40px 8%;
+            gap: 50px;
+            align-items: start;
+        }
+        .ana-baslik-alani h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 25px; font-weight: 800; }
+        .ana-baslik-alani p { font-size: 1.1rem; color: var(--yazi-gri); margin-bottom: 30px; max-width: 500px; }
+
+        .kart-yan { 
+            background: var(--beyaz); 
+            padding: 25px; 
+            border-radius: 20px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.03);
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+        .kart-yan:hover { transform: translateY(-5px); }
+
+        .section-title { font-size: 2.2rem; margin: 60px 8% 25px 8%; font-weight: 700; }
+
+        /* --- HİZMETLERİMİZ (10 BÖLÜM) --- */
+        .hizmetler-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 0 8% 40px 8%;
+        }
+        .hizmet-kart {
+            background: var(--beyaz);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        .hizmet-kart:hover { transform: translateY(-5px); }
+        .hizmet-kart h3 { font-size: 1.4rem; margin-bottom: 10px; font-weight: 700; color: #000; }
+        .hizmet-kart p { color: var(--yazi-gri); font-size: 1.05rem; }
+
+        /* --- KAYDIRILABİLİR PROJELER (OKLU SLIDER) --- */
+        .slider-container {
+            position: relative;
+            padding: 0 8% 60px 8%;
+        }
+        .projeler-wrapper {
+            display: flex;
+            gap: 25px;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            padding: 10px 0;
+        }
+        .proje-kart {
+            flex: 0 0 300px; /* Her kartın sabit genişliği */
+            min-width: 300px;
+            background: #fdf8f3;
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid #eee;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        .proje-kart:hover { transform: translateY(-5px); }
+
+        .proje-kart img {
+            width: 100%;
+            height: 180px; /* Görselin yüksekliği */
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+        .proje-kart h3 { font-size: 1.3rem; margin-bottom: 8px; color: #000; }
+        .proje-kart p { font-size: 0.95rem; color: var(--yazi-gri); margin-bottom: 10px; }
+        .tag { background: #777; color: white; padding: 4px 12px; border-radius: 15px; font-size: 0.75rem; display: inline-block; }
+        
+        .slider-nav {
+            position: absolute;
+            top: 50%; /* Orta hizalama */
+            width: 100%;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+            z-index: 10;
+            transform: translateY(-50%); /* Kendi yüksekliğinin yarısı kadar yukarı çek */
+            padding: 0 8%; /* Slider container ile aynı boşluk */
+        }
+        .nav-btn {
+            background: var(--beyaz);
+            border: 1px solid #ddd;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            pointer-events: all;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-size: 1.2rem;
+            color: var(--yazi-koyu);
+            transition: 0.3s;
+        }
+        .nav-btn:hover { background: var(--ana-turuncu); color: white; border-color: var(--ana-turuncu); }
+
+        /* --- MÜŞTERİ YORUMLARI --- */
+        .yorumlar-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 0 8% 60px 8%;
+        }
+        .yorum-kart { 
+            background: var(--beyaz); 
+            padding: 30px; 
+            border-radius: 20px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        .yorum-kart:hover { transform: translateY(-5px); }
+        .yorum-kart p { font-size: 1.1rem; color: var(--yazi-gri); margin-bottom: 15px; }
+        .yorum-kart strong { color: var(--ana-turuncu); font-size: 1.1rem; }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--arka-plan);
+            padding: 60px 8% 40px 8%;
+            border-top: 1px solid #eee;
+            margin-top: 50px;
+        }
+        .footer-ust {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+        .footer-info h3 { font-size: 1.2rem; margin-bottom: 5px; font-weight: 700; }
+        .footer-info p { color: var(--yazi-gri); font-size: 0.95rem; }
+
+        .footer-alt {
+            display: flex;
+            gap: 25px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+            flex-wrap: wrap;
+        }
+        .sosyal-link {
+            text-decoration: none;
+            color: var(--yazi-koyu);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+        .sosyal-link i { font-size: 1.2rem; }
+        .sosyal-link:hover { color: var(--ana-turuncu); }
+
+        /* --- WHATSAPP FLOAT BUTTON --- */
+        .wa-float { 
+            position: fixed; 
+            bottom: 30px; 
+            right: 30px; 
+            background: #25d366; 
+            color: white; 
+            width: 65px; 
+            height: 65px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 35px; 
+            z-index: 2000; 
+            text-decoration: none; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            transition: 0.3s;
+        }
+        .wa-float:hover { transform: scale(1.1); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
+
+        @media (max-width: 1024px) { 
+            .hero, .hizmetler-grid, .yorumlar-grid { grid-template-columns: 1fr; text-align: center; } 
+            header { flex-direction: column; text-align: center; gap: 20px; }
+            .logo-bolumu img { height: 180px; } /* Mobilde logo biraz daha makul boyuta iner */
+            .sag-menu { flex-direction: column; gap: 15px; }
+            nav ul { flex-direction: column; gap: 10px; }
+            .ust-butonlar { justify-content: center; }
+
+            .footer-ust, .footer-alt { flex-direction: column; text-align: center; align-items: center; }
+            .footer-alt { justify-content: center; }
+            
+            .proje-kart { flex: 0 0 calc(90% - 10px); min-width: 280px; } /* Mobil için kart genişliği */
+            .projeler-wrapper { overflow-x: auto; scroll-snap-type: x mandatory; } /* Mobil scroll iyileştirmesi */
+            .proje-kart { scroll-snap-align: start; }
+            .slider-nav { display: none; } /* Mobil cihazlarda okları gizle */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-bolumu"><img src="logo.png" alt="Doğru Tadilat"></div>
+        <div class="sag-menu">
+            <nav><ul><li><a href="index.html">Anasayfa</a></li><li><a href="hakkimizda.html">Hakkımızda</a></li><li><a href="hizmetler.html">Hizmetler</a></li><li><a href="iletisim.html">İletişim</a></li></ul></nav>
+            <div class="ust-butonlar"><a href="tel:+905512698832" class="btn-turuncu">Hemen Ara</a><a href="https://wa.me/905512698832" class="btn-beyaz">WhatsApp</a></div>
+        </div>
+    </header>
+
+    <main class="hero">
+        <section class="ana-baslik-alani">
+            <h1>Tadilatta doğru çözüm, doğru ekip.</h1>
+            <p>Antalya genelinde, teknik bilgi ve usta işçilikle profesyonel tadilat hizmetleri sunuyoruz.</p>
+            <div class="ust-butonlar"><a href="tel:+905512698832" class="btn-turuncu">Hemen Ara</a><a href="https://wa.me/905512698832" class="btn-beyaz">WhatsApp</a></div>
+        </section>
+        <section>
+            <div class="kart-yan"><h3>Usta İşçilik</h3><p>Tecrübeli ekibimizle kusursuz sonuçlar.</p></div>
+            <div class="kart-yan"><h3>Zamanında Teslim</h3><p>Anlaşmaya sadık, planlı proje yönetimi.</p></div>
+            <div class="kart-yan"><h3>Garantili Hizmet</h3><p>İşçilik ve malzemede memnuniyet garantisi.</p></div>
+        </section>
+    </main>
+
+    <h2 class="section-title">Hizmetlerimiz</h2>
+    <div class="hizmetler-grid">
+        <div class="hizmet-kart"><h3>Anahtar Teslim Tadilat</h3><p>Tüm süreci teknik proje disipliniyle uçtan uca yönetiyoruz.</p></div>
+        <div class="hizmet-kart"><h3>Banyo & Mutfak Yenileme</h3><p>Fonksiyonel tasarımlar ve uzun ömürlü malzeme uygulamaları.</p></div>
+        <div class="hizmet-kart"><h3>Elektrik & Su Tesisatı</h3><p>Güvenlik standartlarına uygun modern altyapı kurulumları.</p></div>
+        <div class="hizmet-kart"><h3>Parke, Kapı, Mobilya Montajı</h3><p>Hassas ölçü ve kusursuz montaj işçiliği.</p></div>
+        <div class="hizmet-kart"><h3>Alçı Sıva</h3><p>Pürüzsüz yüzeyler ve boya öncesi mükemmel zemin hazırlığı.</p></div>
+        <div class="hizmet-kart"><h3>Alçıpan, Boya, Kartonpiyer</h3><p>Yaşam alanlarınıza ferahlık katan ince dekorasyon işleri.</p></div>
+        <div class="hizmet-kart"><h3>Fayans & Seramik Döşeme</h3><p>Baba yadigarı usta işçilikle hatasız derz ve döşeme.</p></div>
+        <div class="hizmet-kart"><h3>Mermer Uygulama</h3><p>Zemin ve duvarlarda doğal taş şıklığı ve sağlamlığı.</p></div>
+        <div class="hizmet-kart"><h3>Mutfak Tezgahı</h3><p>Granit ve modern tezgah çözümleriyle mutfaklarda usta dokunuş.</p></div>
+        <div class="hizmet-kart"><h3>İş Takibi</h3><p>Saha koordinasyonu ve profesyonel süreç yönetimi.</p></div>
+    </div>
+
+    <h2 class="section-title">Projelerimiz</h2>
+    <div class="slider-container">
+        <div class="slider-nav">
+            <div class="nav-btn" onclick="kaydir(-330)"><i class="fas fa-chevron-left"></i></div> <div class="nav-btn" onclick="kaydir(330)"><i class="fas fa-chevron-right"></i></div>
+        </div>
+        <div class="projeler-wrapper" id="slider">
+            <div class="proje-kart">
+                <img src="daire1.jpg" alt="Anahtar Teslim Daire Tadilatı">
+                <h3>Daire Tadilatı</h3>
+                <p>Modern ve fonksiyonel yaşam alanları.</p>
+                <div class="tag">Anahtar Teslim</div>
+            </div>
+            <div class="proje-kart">
+                <img src="mutfak1.jpg" alt="Modern Mutfak Tasarımı">
+                <h3>Mutfak Tasarımı</h3>
+                <p>Ergonomik ve şık mutfak çözümleri.</p>
+                <div class="tag">Mutfak Yenileme</div>
+            </div>
+            <div class="proje-kart">
+                <img src="banyo1.jpg" alt="Lüks Banyo Yenileme">
+                <h3>Banyo Yenileme</h3>
+                <p>Spa konforunda modern banyolar.</p>
+                <div class="tag">Banyo Tadilatı</div>
+            </div>
+            <div class="proje-kart">
+                <img src="salon1.jpg" alt="Salon Dekorasyonu">
+                <h3>Salon Dekorasyonu</h3>
+                <p>İtalyan esintili ferah salonlar.</p>
+                <div class="tag">Boya & Dekor</div>
+            </div>
+            <div class="proje-kart">
+                <img src="ofis1.jpg" alt="Ofis Tadilatı">
+                <h3>Ofis Tadilatı</h3>
+                <p>Verimli ve estetik çalışma ortamları.</p>
+                <div class="tag">Kurumsal Çözüm</div>
+            </div>
+            <div class="proje-kart">
+                <img src="teras1.jpg" alt="Teras Kapatma">
+                <h3>Teras Kapatma</h3>
+                <p>Dört mevsim kullanılabilir yaşam alanları.</p>
+                <div class="tag">Ahşap İşçiliği</div>
+            </div>
+            <div class="proje-kart">
+                <img src="tesisat1.jpg" alt="Sıhhi Tesisat Yenileme">
+                <h3>Sıhhi Tesisat</h3>
+                <p>Güvenli ve modern tesisat altyapısı.</p>
+                <div class="tag">Komple Altyapı</div>
+            </div>
+            <div class="proje-kart">
+                <img src="parke1.jpg" alt="Zemin Parke Döşeme">
+                <h3>Zemin Parke</h3>
+                <p>Dayanıklı ve şık laminat parke uygulamaları.</p>
+                <div class="tag">Parke Döşeme</div>
+            </div>
+            <div class="proje-kart">
+                <img src="villa1.jpg" alt="Villa Girişi Mermer Kaplama">
+                <h3>Villa Girişi</h3>
+                <p>Görkemi artıran mermer kaplamalar.</p>
+                <div class="tag">Mermer Uygulama</div>
+            </div>
+            <div class="proje-kart">
+                <img src="alcipan1.jpg" alt="Alçıpan Tavan Uygulaması">
+                <h3>Alçıpan Tavan</h3>
+                <p>Gizli ışıklandırmalı modern tavanlar.</p>
+                <div class="tag">Dekorasyon</div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="section-title">Müşteri Yorumları</h2>
+    <div class="yorumlar-grid">
+        <div class="yorum-kart"><p>"Evimizin baştan sona tadilatını Doğru Tadilat ekibi yaptı. Baştan sona profesyonellik ve titizlik ile çalıştılar. Her aşamada bilgi verdiler, beklentimizin ötesinde bir sonuç aldık. Kesinlikle tavsiye ederim!"</p><p><strong>— Ayşe Yılmaz</strong></p></div>
+        <div class="yorum-kart"><p>"Mutfak ve banyomu yenilediler. Kullanılan malzemelerin kalitesi ve işçiliğin inceliği harika. Özellikle zamanında teslim etmeleri ve sürekli iletişimde olmaları takdire şayan. Eşimle çok memnunuz."</p><p><strong>— Mehmet Demir</strong></p></div>
+    </div>
+
+    <footer>
+        <div class="footer-ust">
+            <div class="footer-info"><h3>Doğru Tadilat</h3><p>© 2025 Tüm hakları saklıdır. • Antalya</p></div>
+            <div style="color: var(--yazi-gri); font-size: 0.9rem;">Hakkımızda • İletişim • Gizlilik</div>
+        </div>
+        <div class="footer-alt">
+            <a href="https://instagram.com/dogrutadilat" class="sosyal-link" target="_blank"><i class="fab fa-instagram" style="color:#E4405F"></i> Instagram</a>
+            <a href="https://facebook.com/profile.php?id=61586055050232" class="sosyal-link" target="_blank"><i class="fab fa-facebook" style="color:#1877F2"></i> Facebook</a>
+            <a href="https://youtube.com/@dogrutadilat" class="sosyal-link" target="_blank"><i class="fab fa-youtube" style="color:#FF0000"></i> YouTube</a>
+            <a href="https://x.com/dogrutadilat" class="sosyal-link" target="_blank"><i class="fab fa-x-twitter" style="color:#000000"></i> X</a>
+            <a href="https://wa.me/905512698832" class="sosyal-link" target="_blank"><i class="fab fa-whatsapp" style="color:#25D366"></i> WhatsApp</a>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/905512698832" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <script>
+        function kaydir(deger) {
+            document.getElementById('slider').scrollBy({
+                left: deger,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>

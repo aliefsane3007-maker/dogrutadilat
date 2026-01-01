@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim | Doğru Tadilat</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --arka-plan: #fff6ec;
+            --ana-turuncu: #e33e16;
+            --yazi-koyu: #1a1a1a;
+            --yazi-gri: #555;
+            --beyaz: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: var(--arka-plan); 
+            color: var(--yazi-koyu);
+            line-height: 1.6;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 8%;
+            background-color: var(--arka-plan);
+        }
+        .logo-bolumu img { height: 140px; mix-blend-mode: multiply; }
+        .sag-menu { display: flex; align-items: center; gap: 30px; }
+        nav ul { display: flex; list-style: none; gap: 20px; }
+        nav ul li a { text-decoration: none; color: var(--yazi-koyu); font-weight: 500; }
+        .ust-butonlar { display: flex; gap: 10px; }
+        .btn-turuncu { background: var(--ana-turuncu); color: white; padding: 10px 22px; border-radius: 6px; text-decoration: none; font-weight: bold; }
+
+        .contact-header {
+            text-align: center;
+            padding: 60px 8% 20px 8%;
+        }
+        .contact-header h1 { font-size: 3rem; font-weight: 800; margin-bottom: 15px; }
+
+        /* 8 Butonlu Grid Yapısı */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Yan yana 4 buton */
+            gap: 20px;
+            padding: 40px 8% 80px 8%;
+        }
+
+        .contact-card {
+            background: var(--beyaz);
+            padding: 30px 15px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        .contact-card:hover { transform: translateY(-5px); }
+        .contact-card i { font-size: 2.2rem; margin-bottom: 15px; display: block; }
+        .contact-card h3 { font-size: 1.2rem; margin-bottom: 8px; }
+        .contact-card p { color: var(--yazi-gri); margin-bottom: 20px; font-size: 0.9rem; min-height: 40px; }
+
+        .action-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            color: white;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        /* Kurumsal Renkler */
+        .ig-bg { color: #E4405F; } .ig-btn { background: #E4405F; }
+        .x-bg { color: #000000; } .x-btn { background: #000000; }
+        .fb-bg { color: #1877F2; } .fb-btn { background: #1877F2; }
+        .wa-bg { color: #25D366; } .wa-btn { background: #25D366; }
+        .phone-bg { color: #34495e; } .phone-btn { background: #34495e; }
+        .mail-bg { color: #e67e22; } .mail-btn { background: #e67e22; }
+        .yt-bg { color: #FF0000; } .yt-btn { background: #FF0000; }
+
+        footer {
+            background-color: var(--arka-plan);
+            padding: 60px 8% 40px 8%;
+            border-top: 1px solid #eee;
+        }
+        .footer-alt { display: flex; gap: 20px; padding-top: 30px; border-top: 1px solid #eee; flex-wrap: wrap; justify-content: center; }
+        .sosyal-link { text-decoration: none; color: var(--yazi-koyu); display: flex; align-items: center; gap: 8px; font-weight: 600; }
+
+        @media (max-width: 1100px) { .contact-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .contact-grid { grid-template-columns: 1fr; } .logo-bolumu img { height: 150px; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-bolumu"><img src="logo.png" alt="Doğru Tadilat"></div>
+        <div class="sag-menu">
+            <nav><ul><li><a href="index.html">Anasayfa</a></li><li><a href="hakkimizda.html">Hakkımızda</a></li><li><a href="hizmetler.html">Hizmetler</a></li><li><a href="iletisim.html">İletişim</a></li></ul></nav>
+            <div class="ust-butonlar"><a href="tel:+905512698832" class="btn-turuncu">Hemen Ara</a></div>
+        </div>
+    </header>
+
+    <div class="contact-header">
+        <h1>Bize Ulaşın</h1>
+        <p>Antalya genelinde tüm projeleriniz için 7/24 iletişim kanallarımız açık.</p>
+    </div>
+
+    <div class="contact-grid">
+        <div class="contact-card">
+            <i class="fab fa-instagram ig-bg"></i>
+            <h3>Instagram</h3>
+            <p>Projelerimizi takip edin.</p>
+            <a href="https://instagram.com/dogrutadilat" class="action-btn ig-btn" target="_blank">Takip Et</a>
+        </div>
+        <div class="contact-card">
+            <i class="fab fa-x-twitter x-bg"></i>
+            <h3>X (Twitter)</h3>
+            <p>Haber ve paylaşımlar.</p>
+            <a href="https://x.com/dogrutadilat" class="action-btn x-btn" target="_blank">Bize Yazın</a>
+        </div>
+        <div class="contact-card">
+            <i class="fab fa-facebook fb-bg"></i>
+            <h3>Facebook</h3>
+            <p>Facebook sayfamız.</p>
+            <a href="https://www.facebook.com/profile.php?id=61586055050232" class="action-btn fb-btn" target="_blank">Ziyaret Et</a>
+        </div>
+        <div class="contact-card">
+            <i class="fab fa-whatsapp wa-bg"></i>
+            <h3>WhatsApp</h3>
+            <p>Hızlı keşif ve teklif hattı.</p>
+            <a href="https://wa.me/905512698832" class="action-btn wa-btn">Mesaj At</a>
+        </div>
+
+        <div class="contact-card">
+            <i class="fas fa-phone-alt phone-bg"></i>
+            <h3>Telefon 1</h3>
+            <p>Genel İletişim Hattı</p>
+            <a href="tel:+905512698832" class="action-btn phone-btn">Tıkla Ara</a>
+        </div>
+        <div class="contact-card">
+            <i class="fas fa-user-tie phone-bg"></i>
+            <h3>Telefon 2</h3>
+            <p>Fahri Doğru<br>0535 810 76 86</p>
+            <a href="tel:+905358107686" class="action-btn phone-btn">Tıkla Ara</a>
+        </div>
+        <div class="contact-card">
+            <i class="fas fa-envelope mail-bg"></i>
+            <h3>E-Posta</h3>
+            <p>dogrutadilat@gmail.com</p>
+            <a href="mailto:dogrutadilat@gmail.com" class="action-btn mail-btn">Mail Gönder</a>
+        </div>
+        <div class="contact-card">
+            <i class="fab fa-youtube yt-bg"></i>
+            <h3>YouTube</h3>
+            <p>Uygulama videolarımız.</p>
+            <a href="https://www.youtube.com/@Do%C4%9FruTadilat" class="action-btn yt-btn" target="_blank">Abone Ol</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-alt">
+            <a href="https://instagram.com/dogrutadilat" class="sosyal-link"><i class="fab fa-instagram" style="color:#E4405F"></i> Instagram</a>
+            <a href="https://facebook.com/profile.php?id=61586055050232" class="sosyal-link"><i class="fab fa-facebook" style="color:#1877F2"></i> Facebook</a>
+            <a href="https://www.youtube.com/@Do%C4%9FruTadilat" class="sosyal-link"><i class="fab fa-youtube" style="color:#FF0000"></i> YouTube</a>
+            <a href="https://x.com/dogrutadilat" class="sosyal-link"><i class="fab fa-x-twitter" style="color:#000000"></i> X</a>
+            <a href="https://wa.me/905512698832" class="sosyal-link"><i class="fab fa-whatsapp" style="color:#25D366"></i> WhatsApp</a>
+        </div>
+    </footer>
+
+</body>
+</html>

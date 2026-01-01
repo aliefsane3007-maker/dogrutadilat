@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hizmetlerimiz | Doğru Tadilat</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --arka-plan: #fff6ec;
+            --ana-turuncu: #e33e16;
+            --yazi-koyu: #1a1a1a;
+            --yazi-gri: #555;
+            --beyaz: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--arka-plan); color: var(--yazi-koyu); line-height: 1.6; }
+
+        header { display: flex; justify-content: space-between; align-items: center; padding: 25px 8%; background-color: var(--arka-plan); }
+        .logo-bolumu img { height: 140px; mix-blend-mode: multiply; }
+        .sag-menu { display: flex; align-items: center; gap: 30px; }
+        nav ul { display: flex; list-style: none; gap: 20px; }
+        nav ul li a { text-decoration: none; color: var(--yazi-koyu); font-weight: 600; }
+        .btn-turuncu { background: var(--ana-turuncu); color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; }
+
+        .page-header { text-align: center; padding: 40px 8%; }
+        .page-header h1 { font-size: 3rem; font-weight: 800; margin-bottom: 10px; }
+
+        .hizmetler-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 0 8% 40px 8%;
+        }
+        .hizmet-kart {
+            background: var(--beyaz);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .hizmet-kart h3 { color: var(--ana-turuncu); margin-bottom: 10px; }
+
+        .galeri-title { margin: 40px 8% 20px 8%; font-size: 2rem; font-weight: 700; border-left: 5px solid var(--ana-turuncu); padding-left: 15px; }
+        .galeri-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 0 8% 80px 8%;
+        }
+        .galeri-item {
+            background: #000;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 250px;
+            position: relative;
+            border: 1px solid #eee;
+        }
+        .galeri-item iframe, .galeri-item img { width: 100%; height: 100%; border: none; object-fit: cover; }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            align-items: center; justify-content: center;
+        }
+        .modal-content { max-width: 90%; max-height: 85%; border-radius: 10px; }
+        .close-btn { position: absolute; top: 20px; right: 30px; color: white; font-size: 45px; cursor: pointer; }
+
+        footer { background-color: var(--arka-plan); padding: 60px 8% 40px 8%; border-top: 1px solid #eee; }
+        .footer-alt { display: flex; gap: 20px; padding-top: 30px; border-top: 1px solid #eee; flex-wrap: wrap; justify-content: center; }
+        .sosyal-link { text-decoration: none; color: var(--yazi-koyu); display: flex; align-items: center; gap: 8px; font-weight: 600; }
+
+        @media (max-width: 900px) { .hizmetler-grid { grid-template-columns: 1fr; } .logo-bolumu img { height: 150px; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-bolumu"><img src="logo.png"></div>
+        <div class="sag-menu">
+            <nav><ul><li><a href="index.html">Anasayfa</a></li><li><a href="hakkimizda.html">Hakkımızda</a></li><li><a href="hizmetler.html">Hizmetler</a></li><li><a href="iletisim.html">İletişim</a></li></ul></nav>
+            <div class="ust-butonlar"><a href="tel:+905512698832" class="btn-turuncu">Hemen Ara</a></div>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <h1>Hizmetlerimiz & Uygulamalarımız</h1>
+        <p>Antalya'da Teknik Bilgi ve Usta İşçiliğin Buluştuğu Nokta.</p>
+    </div>
+
+    <div class="hizmetler-grid">
+        <div class="hizmet-kart"><h3>Anahtar Teslim Tadilat</h3><p>Tüm süreci uçtan uca yönetiyoruz.</p></div>
+        <div class="hizmet-kart"><h3>Banyo & Mutfak Yenileme</h3><p>Modern tasarımlar ve kaliteli işçilik.</p></div>
+        <div class="hizmet-kart"><h3>Elektrik & Su Tesisatı</h3><p>Güvenli ve standartlara uygun altyapı.</p></div>
+        <div class="hizmet-kart"><h3>Parke, Kapı, Mobilya Montajı</h3><p>Hassas montaj ve düzgün bitiş.</p></div>
+        <div class="hizmet-kart"><h3>Alçı Sıva</h3><p>Pürüzsüz zeminler için usta dokunuşu.</p></div>
+        <div class="hizmet-kart"><h3>Alçıpan, Boya, Kartonpiyer</h3><p>Estetik ve ferah iç mekanlar.</p></div>
+        <div class="hizmet-kart"><h3>Fayans & Seramik Döşeme</h3><p>Kusursuz derz ve usta döşeme.</p></div>
+        <div class="hizmet-kart"><h3>Mermer Uygulama</h3><p>Doğal taş şıklığı ve dayanıklılık.</p></div>
+        <div class="hizmet-kart"><h3>Mutfak Tezgahı</h3><p>Granit ve modern tezgah çözümleri.</p></div>
+        <div class="hizmet-kart"><h3>İş Takibi</h3><p>Profesyonel saha yönetimi ve raporlama.</p></div>
+    </div>
+
+    <h2 class="galeri-title">Uygulama Videoları</h2>
+    <div class="galeri-grid">
+        <div class="galeri-item">
+            <iframe src="https://www.youtube.com/embed/67uiwEpW5FQ" allowfullscreen></iframe>
+        </div>
+        <div class="galeri-item">
+            <iframe src="https://www.youtube.com/embed/ZN6v8c42Ii0" allowfullscreen></iframe>
+        </div>
+        <div class="galeri-item">
+            <iframe src="https://www.youtube.com/embed/Oz_67e82A-s" allowfullscreen></iframe>
+        </div>
+        <div class="galeri-item">
+            <iframe src="https://www.youtube.com/embed/vRTYNj71gMQ" allowfullscreen></iframe>
+        </div>
+        <div class="galeri-item">
+            <iframe src="https://www.youtube.com/embed/Nsyb2of2wog" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <h2 class="galeri-title">Uygulama Fotoğrafları</h2>
+    <div class="galeri-grid">
+        <script>
+            for(let i=1; i<=15; i++) {
+                document.write(`
+                    <div class="galeri-item" style="cursor:pointer" onclick="openPhoto('foto${i}.jpg')">
+                        <img src="foto${i}.jpg" alt="Uygulama ${i}" onerror="this.src='https://via.placeholder.com/400x300?text=Fotoğraf+Yükleniyor'">
+                    </div>
+                `);
+            }
+        </script>
+    </div>
+
+    <div id="photoModal" class="modal" onclick="this.style.display='none'">
+        <span class="close-btn">&times;</span>
+        <img id="modalImg" class="modal-content">
+    </div>
+
+    <footer>
+        <div class="footer-alt">
+            <a href="https://instagram.com/dogrutadilat" class="sosyal-link"><i class="fab fa-instagram" style="color:#E4405F"></i> Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=61586055050232" class="sosyal-link"><i class="fab fa-facebook" style="color:#1877F2"></i> Facebook</a>
+            <a href="https://www.youtube.com/@Do%C4%9FruTadilat" class="sosyal-link"><i class="fab fa-youtube" style="color:#FF0000"></i> YouTube</a>
+            <a href="https://wa.me/905512698832" class="sosyal-link"><i class="fab fa-whatsapp" style="color:#25D366"></i> WhatsApp</a>
+        </div>
+    </footer>
+
+    <script>
+        function openPhoto(src) {
+            document.getElementById('modalImg').src = src;
+            document.getElementById('photoModal').style.display = "flex";
+        }
+    </script>
+</body>
+</html>
